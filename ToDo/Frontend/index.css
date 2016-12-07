@@ -1,0 +1,37 @@
+#fontChanger {
+	font-family: 'Cinzel', serif;
+	background: url(map.jpg) no-repeat center center fixed;
+	background-size: cover;
+}
+
+#output {
+	margin-top: 25px;
+	margin-right: 80px;
+}
+
+#entryField {
+	opacity: .9;
+}
+
+#listItemPointerChange {
+	cursor: pointer;
+}
+
+#dropPointerChange {
+	cursor: pointer;
+}
+
+#titleHeader {
+	font-size: 100px;
+	color: #0145b2;
+	background: rgba(245, 245, 245, 0.4);
+}
+
+#priorityLabel {
+	margin-top: 20px;
+}
+
+#inputField {
+	font-size: 20px;
+}
+

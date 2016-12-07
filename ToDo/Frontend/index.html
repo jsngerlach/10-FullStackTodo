@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="" ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>To Do</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+
+<body id="fontChanger" ng-controller="TodoController as postCtrl">
+    <p id="titleHeader" class="text-center">List for World Domination !</p>
+    <div class="container-fluid">
+        <div class="col-sm-4">
+            <div id="entryField" class="panel panel-info">
+                <div class="panel-heading">
+                    <p id="panelHeading" class="panel-title">What do you need to rule the world?</p>
+                </div>
+                <div class="panel-body">
+                    <input id="inputField" placeholder="World Dominating Task !" ng-model="postCtrl.newTodo.name" cols="6" rows="2" class="form-control"></input>
+                    <form id="inputPanel">
+                        <div class="form-group">
+                            <label id="priorityLabel" for="sev">Priority:</label>
+                            <select id="dropPointerChange" class="form-control" ng-model="postCtrl.newTodo.priority">
+                                <option value="3">Low</option>
+                                <option value="2">Medium</option>
+                                <option value="1">High</option>
+                            </select>
+                            <hr>
+                        </div>
+                    </form>
+                    <div class="footer clearfix">
+                        <button class="btn btn-lg btn-danger pull-right" ng-click="postCtrl.addTodo()">+ Add Task</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary btn-lg" ng-click="postCtrl.orderBy='priority'">Highest</button>
+                <button type="button" class="btn btn-primary btn-lg" ng-click="postCtrl.orderBy='-priority'">Lowest</button>
+                <button type="button" class="btn btn-primary btn-lg" ng-click="postCtrl.orderBy='name'">Alphabetic</button>
+            </div>
+            <ol class="list-group">
+                <li id="output" class="list-group-item clearfix" ng-repeat="todo in postCtrl.todos | orderBy :postCtrl.orderBy" ng-class="postCtrl.getClass(todo)">
+                    <span  id="listItemPointerChange" ng-click=" editing = true" ng-hide="editing">{{todo.name}}</span>
+                    <input ng-model="todo.name" ng-show="editing" type="text" id="editInput">
+                    <button ng-show="editing" class="btn-xs btn-info" ng-click="postCtrl.editTodo(todo);editing = false">complete change</button>
+                    <button class="btn btn-xs btn-danger pull-right" ng-click="postCtrl.deleteTodo(todo)" ng-blur="editing = false" >x</button>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <script src="//code.jquery.com/jquery.js "></script>
+    <script src="https://maxcdn.bootstrap
+    cdn.com/bootstrap/3.3.6/js/bootstrap.min.js " integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS " crossorigin="anonymous "></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/home/home.controller.js"></script>
+    <script src="app/core/todo.factory.js"></script>
+</body>
+
+</html>
